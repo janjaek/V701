@@ -1,9 +1,126 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\begin{figure}
+Es werden zwei Messungen für zwei verschiedene feste Abstände durchgeführt.
+Es werden Zählrate, Drücke und Channel aufgenommen.
+Der Channel für die Messung bei $0\si{\milli\bar}$ entspricht $4\si{\mega\electronvolt}$.
+Die effektive Länge wird mit Gleichung bestimmt.
+Die so erhaltenen Werte sind in Tabelle\ref{tab:mess1} aufgetragen.
+\begin{table}[H]
+    \caption{Messwerte für einen festen Abstand von $x_0=2\si{\centi\meter}$.}
+    \label{tab:mess1}
+    \centering
+    \begin{tabular}{S[table-format=4.0] S[table-format=1.2(0)e0] S[table-format=4.0(0)e0] S[table-format=2.2(0)e0]  }
+        \toprule
+        {Zählrate$1/120s$} & {Energie$/\si{\mega\electronvolt}$} & {Druck$/\si{\milli\bar}$} &{effektive Länge$\si{\centi\meter}$} \\
+        \midrule
+        74271 & 4.00 & 0 & 0.00\\
+        73634 & 3.97 & 50 & 0.10\\
+        71805 & 3.87 & 100 & 0.20\\
+        69331 & 3.78 & 150 & 0.30\\
+        67027 & 3.60 & 200 & 0.39\\
+        64835 & 3.55 & 250 & 0.49\\
+        61440 & 3.43 & 300 & 0.59\\
+        33760 & 3.06 & 350 & 0.69\\
+        28770 & 3.02 & 400 & 0.79\\
+        41401 & 3.06 & 450 & 0.89\\
+        41124 & 3.05 & 500 & 0.99\\
+        33198 & 3.01 & 550 & 1.09\\
+        27967 & 3.02 & 600 & 1.18\\
+        20681 & 3.00 & 650 & 1.28\\
+        15966 & 2.99 & 700 & 1.38\\
+        9472 & 2.99 & 750 & 1.48\\
+        6076 & 2.99 & 800 & 1.58\\
+        2561 & 3.01 & 850 & 1.68\\
+        937 & 2.99 & 900 & 1.78\\
+        397 & 2.98 & 950 & 1.88\\
+        99 & 3.00 & 1000 & 1.97\\
+
+        \bottomrule
+    \end{tabular}
+\end{table}
+\noindent Die Zählrate wird in Abbildung\ref{fig:c1} gegen die effektive Länge aufgetragen.
+Es wird eine Reggressionsgerade mit SciPy/Python nach der Funktionsvorschrift
+\begin{equation*}
+  f(x) = mx +b
+\end{equation*}
+erstellt.
+\begin{figure}[H]
   \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
+  \includegraphics{build/counts1.pdf}
+  \caption{Lineare Reggression für die Zählrate in Abhängigkeit der effektiven Länge.}
+  \label{fig:c1}
 \end{figure}
+\noindent Dabei ergeben sich folgenede Parameter:
+\begin{equation*}
+  m =(-384\pm29)\si{\per\centi\meter}
+\end{equation*}
+und
+\begin{equation*}
+  b =667\pm27  .
+\end{equation*}
+Die mittlere Reichweite ergibt sich dann als Schnittpunkt der Regressionsgeraden mit der Horizontalen bei $y=309.46$.
+Die mittlere Reichweite kann, dann durch umstellen der Funktionsvorschrift, mit
+\begin{equation*}
+  R_m=\frac{309.46-b}{m}
+\end{equation*}
+bestimmt werden.
+Der Fehler der mittleren Reichweite wird mit Gaußscher Fehlerfortpflanzung nach
+\begin{equation*}
+  \sigma_R = \sqrt{(\frac{b-309.46}{m^2}\sigma_m)^2 +(-\frac{1}{m}\sigma_b)^2}
+\end{equation*}
+berrechnet.
+Der so erhaltene Wert beträgt $R_m= (0.93\pm0.1)\si{\centi\meter}$.
+Damit lässt sich nach Gleichung eine Energie von $E_{\alpha} = 0.45\si{\mega\electronvolt}$ bestimmen.
+Die Energie wird in Abbildung\ref{fig:e1} als Funktion der effektiven Länge aufgetragen.
+Es wird eine Reggressionsgerade nach der Vorschrift
+\begin{equation*}
+  f(x) = mx + b
+\end{equation*}
+durch die Messwerte gezogen.
+Für die Reggressionsrechnung wird nur der lineare Anteil der Messwerte verwendet.
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/energie1.pdf}
+  \caption{Lineare Reggression für die Energie in Abhängigkeit der effektiven Länge.}
+  \label{fig:e1}
+\end{figure}
+\noindent Der Energieverlust $-\frac{dE}{dx}$ kann dann als Steigung der Regression bestimmt werden.
+Damit ergibt sich ein Energieverlust von
+\begin{equation*}
+  -\frac{dE}{dx} =(-0.52\pm0.07)\si{\mega\electronvolt\per\centi\meter} .
+\end{equation*}
+Analog wird für den zweiten Abstand vorgegangen.
+Die Messwerte sind in Tabelle \ref{tab:mess2} aufgetragen
+\begin{table}[H]
+    \caption{Messwerte für einen festen Abstand von $x_0=1.5\si{\centi\meter}$.}
+    \label{tab:mess2}
+    \centering
+    \begin{tabular}{S[table-format=4.0] S[table-format=1.2(0)e0] S[table-format=4.0(0)e0] S[table-format=2.2(0)e0]  }
+        \toprule
+        {Zählrate$1/120s$} & {Energie$/\si{\mega\electronvolt}$} & {Druck$/\si{\milli\bar}$} &{effektive Länge$\si{\centi\meter}$} \\
+        \midrule
+        148139 & 4.00 & 0 & 0.00\\
+        150632 & 3.93 & 50 & 0.07\\
+        149256 & 3.85 & 100 & 0.15\\
+        143513 & 3.56 & 150 & 0.22\\
+        139419 & 3.46 & 200 & 0.30\\
+        145173 & 3.56 & 250 & 0.37\\
+        136922 & 3.29 & 300 & 0.44\\
+        134960 & 3.20 & 350 & 0.52\\
+        133809 & 3.15 & 400 & 0.59\\
+        138624 & 3.22 & 450 & 0.66\\
+        138244 & 3.19 & 500 & 0.74\\
+        130125 & 2.95 & 550 & 0.81\\
+        131421 & 2.95 & 600 & 0.89\\
+        125958 & 2.79 & 650 & 0.96\\
+        123717 & 2.72 & 700 & 1.04\\
+        121739 & 2.67 & 750 & 1.11\\
+        120083 & 2.59 & 800 & 1.18\\
+        117426 & 2.49 & 850 & 1.26\\
+        114320 & 2.45 & 900 & 1.33\\
+        112018 & 2.42 & 950 & 1.41\\
+        104394 & 2.36 & 1000 & 1.48\\
+        \bottomrule
+    \end{tabular}
+\end{table}
