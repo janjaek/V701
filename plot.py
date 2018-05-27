@@ -10,6 +10,7 @@ from scipy.optimize import curve_fit
 from uncertainties import unumpy
 import scipy.constants.constants as const
 from uncertainties import ufloat
+import math
 
 data = np.genfromtxt('content/Messung1.txt', unpack=True)
 #plot1
@@ -127,9 +128,105 @@ plt.clf()
 T = 10
 counts = np.genfromtxt("content/poisson.txt", unpack = True)
 zaehlrate = counts / T
-plt.hist(zaehlrate)
-plt.xlabel(r"Counts")
-plt.ylabel(r"$\mathrm{H\"aufigkeit}$")
-plt.legend(loc='best')
-plt.savefig("PlotPoisson.pdf")
+
+mittelwert = np.mean(zaehlrate)
+varianz = np.var(zaehlrate)
+
+print("zaehlrateMittelwert = " + str(round(mittelwert, 3)))
+print("varianz = " + str(round(varianz, 3)))
+
+balkenzahl = 8
+breite = (np.max(zaehlrate) - np.min(zaehlrate)) / balkenzahl
+balken = np.array([])
+
+for balkenNummer in range(1, balkenzahl + 1, 1):
+        untereSchranke = np.min(zaehlrate) + (balkenNummer - 1) * breite
+        obereSchranke = np.min(zaehlrate) + balkenNummer * breite
+        balken = np.append(balken, [0])
+        for i in range(0, np.size(zaehlrate), 1):
+                if (zaehlrate[i] >= untereSchranke) & (zaehlrate[i] < obereSchranke):
+                        balken[balkenNummer - 1] += 1
+        print("Bereich " + str(balkenNummer) + ": \t" + str(round(untereSchranke, 3)) + "\t bis \t" + str(round(obereSchranke, 3)) + "\t: " + str(balken[balkenNummer - 1]))
+
+k = np.arange(0, balkenzahl, 1)
+poissonLambda = 4.
+poissonBalken = np.array([])
+kPoisson = np.arange(0, balkenzahl + 2, 1)
+for i in kPoisson:
+        poissonBalken = np.append(poissonBalken, [poissonLambda ** i / math.factorial(i) *
+math.exp(-poissonLambda)])
+
+
 plt.clf()
+plt.grid()
+
+plt.bar(k + 1, balken / np.sum(balken), color = "r", width = .4, label=r'Messwerte')
+plt.bar(kPoisson + .4, poissonBalken, color = "b", width = .4,
+label=r'Piossonverteilung')
+
+#plt.xlim([0, 10])
+#plt.ylim([0, .25])
+plt.xlabel(r"$\mathrm{H\"aufigkeitsbereich}$")
+plt.ylabel(r"$\mathrm{rel.\, H\"aufigkeit}$")
+#plt.xlabel("my xlabel")
+#plt.ylabel("my ylabel")
+plt.legend(loc='best')
+
+#plt.legend(["Gaussfunktion", "Messwerte"], "upper right")
+
+plt.savefig("build/PlotPoisson.pdf")
+
+#gauß
+time = 10 #in Sekunden
+counts = np.loadtxt('content/poisson.txt', unpack=True)
+counts = counts/time
+
+mittelwert = np.mean(counts)
+varianz = np.var(counts)
+
+print("zaehlrateMittelwert = " + str(round(mittelwert, 3)))
+print("varianz = " + str(round(varianz, 3)))
+
+balkenzahl = 8
+breite = (np.max(counts) - np.min(counts)) / balkenzahl
+balken = np.array([])
+
+for balkenNummer in range(1, balkenzahl + 1, 1):
+        untereSchranke = np.min(counts) + (balkenNummer - 1) * breite
+        obereSchranke = np.min(counts) + balkenNummer * breite
+        balken = np.append(balken, [0])
+        for i in range(0, np.size(counts), 1):
+                if (counts[i] >= untereSchranke) & (counts[i] < obereSchranke):
+                        balken[balkenNummer - 1] += 1
+        print("Bereich " + str(balkenNummer) + ": \t" + str(round(untereSchranke, 3)) + "\t bis \t" + str(round(obereSchranke, 3)) + "\t: " + str(balken[balkenNummer - 1]))
+
+k = np.arange(0, balkenzahl, 1)
+
+x = np.arange(-2, 10, .001)
+varianz = 2
+mittelwert = 4.5
+
+gaussFunktion = lambda x, A: A / (varianz * np.sqrt(2 * np.pi)) * np.e ** (- .5 *
+((x - mittelwert) / varianz) ** 2)
+
+koeffizienten, unsicherheit = curve_fit(gaussFunktion, balkenNummer, balken, maxfev
+= 1000)
+
+
+plt.clf()
+plt.grid()
+
+plt.plot(x, gaussFunktion(x, 1), "b-", label=r'Gaußfunktion')
+plt.bar(k + 1, balken / np.sum(balken), color = "r", width = .8,label=r'Messwerte')
+
+#plt.hist([zaehlrate], facecolor='green')
+
+
+#plt.xlim([0, 10])
+#plt.ylim([0, .25])
+plt.xlabel(r"$\mathrm{H\"aufigkeitsbereich}$")
+plt.ylabel(r"$\mathrm{rel.\, H\"aufigkeit}$")
+plt.legend(loc='best')
+
+
+plt.savefig("build/PlotGauss.pdf")
