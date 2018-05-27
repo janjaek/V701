@@ -2,17 +2,17 @@
 \label{sec:Auswertung}
 \subsection{Bestimmung der Reichweite von Alpha-Strahlung}
 Es werden zwei Messungen für zwei verschiedene feste Abstände durchgeführt.
-Es werden Zählrate, Drücke und Channel aufgenommen.
-Der Channel für die Messung bei $0\si{\milli\bar}$ entspricht $4\si{\mega\electronvolt}$.
+Es werden Zählrate, Druck und Channel aufgenommen.
+Der Channel für die Messung bei $\SI{0}{\milli\bar}$ entspricht $\SI{4}{\mega\electronvolt}$.
 Die effektive Länge wird mit Gleichung bestimmt.
-Die so erhaltenen Werte sind in Tabelle\ref{tab:mess1} aufgetragen.
+Die so erhaltenen Werte sind in Tabelle \ref{tab:mess1} aufgetragen.
 \begin{table}[H]
-    \caption{Messwerte für einen festen Abstand von $x_0=2\si{\centi\meter}$.}
+    \caption{Messwerte für einen festen Abstand von $x_0=\SI{2}{\centi\meter}$.}
     \label{tab:mess1}
     \centering
-    \begin{tabular}{S[table-format=4.0] S[table-format=1.2(0)e0] S[table-format=4.0(0)e0] S[table-format=2.2(0)e0]  }
+    \begin{tabular}{S[table-format=5.0] S[table-format=1.2(0)e0] S[table-format=4.0(0)e0] S[table-format=1.2(0)e0]  }
         \toprule
-        {Zählrate$1/120s$} & {Energie$/\si{\mega\electronvolt}$} & {Druck$/\si{\milli\bar}$} &{effektive Länge$\si{\centi\meter}$} \\
+        {Zählrate$/\num{120}^{-1}\si[per-mode=reciprocal]{\per\second}$} & {Energie$/\si{\mega\electronvolt}$} & {Druck$/\si{\milli\bar}$} &{effektive Länge$/\si{\centi\meter}$} \\
         \midrule
         74271 & 4.00 & 0 & 0.00\\
         73634 & 3.97 & 50 & 0.10\\
@@ -35,11 +35,10 @@ Die so erhaltenen Werte sind in Tabelle\ref{tab:mess1} aufgetragen.
         937 & 2.99 & 900 & 1.78\\
         397 & 2.98 & 950 & 1.88\\
         99 & 3.00 & 1000 & 1.97\\
-
         \bottomrule
     \end{tabular}
 \end{table}
-\noindent Die Zählrate wird in Abbildung\ref{fig:c1} gegen die effektive Länge aufgetragen.
+\noindent Die Zählrate wird in Abbildung \ref{fig:c1} gegen die effektive Länge aufgetragen.
 Es wird eine Reggressionsgerade mit SciPy/Python nach der Funktionsvorschrift
 \begin{equation*}
   f(x) = mx +b
@@ -53,26 +52,26 @@ erstellt.
 \end{figure}
 \noindent Dabei ergeben sich folgenede Parameter:
 \begin{equation*}
-  m =(-384\pm29)\si{\per\centi\meter}
+  m =\SI{-384\pm29}{\per\second\per\centi\meter}
 \end{equation*}
 und
 \begin{equation*}
-  b =667\pm27  .
+  b =\SI{667\pm27}{\per\second}.
 \end{equation*}
-Die mittlere Reichweite ergibt sich dann als Schnittpunkt der Regressionsgeraden mit der Horizontalen bei $y=309.46$.
+Die mittlere Reichweite ergibt sich dann als Schnittpunkt der Regressionsgeraden mit der Horizontalen bei $y=\SI{309.46}{\per\second}$.
 Die mittlere Reichweite kann, dann durch umstellen der Funktionsvorschrift, mit
 \begin{equation*}
-  R_m=\frac{309.46-b}{m}
+  R_m=\frac{\SI{309.46}{\per\second}-b}{m}
 \end{equation*}
 bestimmt werden.
 Der Fehler der mittleren Reichweite wird mit Gaußscher Fehlerfortpflanzung nach
 \begin{equation*}
-  \sigma_R = \sqrt{(\frac{b-309.46}{m^2}\sigma_m)^2 +(-\frac{1}{m}\sigma_b)^2}
+  \sigma_R = \sqrt{\left(\frac{b-\SI{309.46}{\per\second}}{m^2}\sigma_m\right)^2 +\left(\frac{1}{m}\sigma_b\right)^2}
 \end{equation*}
 berrechnet.
-Der so erhaltene Wert beträgt $R_m= (0.93\pm0.1)\si{\centi\meter}$.
-Damit lässt sich nach Gleichung eine Energie von $E_{\alpha} = 0.45\si{\mega\electronvolt}$ bestimmen.
-Die Energie wird in Abbildung\ref{fig:e1} als Funktion der effektiven Länge aufgetragen.
+Der so erhaltene Wert beträgt $R_m= \SI{0.93\pm0.1}{\centi\meter}$.
+Damit lässt sich nach Gleichung eine Energie von $E_{\alpha} = \SI{0.45}{\mega\electronvolt}$ bestimmen.
+Die Energie wird in Abbildung \ref{fig:e1} als Funktion der effektiven Länge aufgetragen.
 Es wird eine Reggressionsgerade nach der Vorschrift
 \begin{equation*}
   f(x) = mx + b
@@ -88,17 +87,17 @@ Für die Reggressionsrechnung wird nur der lineare Anteil der Messwerte verwende
 \noindent Der Energieverlust $-\frac{dE}{dx}$ kann dann als Steigung der Regression bestimmt werden.
 Damit ergibt sich ein Energieverlust von
 \begin{equation*}
-  -\frac{dE}{dx} =(-0.52\pm0.07)\si{\mega\electronvolt\per\centi\meter} .
+  -\frac{dE}{dx} = \SI{-0.52\pm0.07}{\mega\electronvolt\per\centi\meter} .
 \end{equation*}
 Analog wird für den zweiten Abstand vorgegangen.
 Die Messwerte sowie Energien und effektive Längen sind in Tabelle \ref{tab:mess2} aufgetragen.
 \begin{table}[H]
-    \caption{Messwerte für einen festen Abstand von $x_0=1.5\si{\centi\meter}$.}
+    \caption{Messwerte für einen festen Abstand von $x_0=\SI{1.5}{\centi\meter}$.}
     \label{tab:mess2}
     \centering
-    \begin{tabular}{S[table-format=4.0] S[table-format=1.2(0)e0] S[table-format=4.0(0)e0] S[table-format=2.2(0)e0]  }
+    \begin{tabular}{S[table-format=6.0] S[table-format=1.2(0)e0] S[table-format=4.0(0)e0] S[table-format=1.2(0)e0]  }
         \toprule
-        {Zählrate$1/120s$} & {Energie$/\si{\mega\electronvolt}$} & {Druck$/\si{\milli\bar}$} &{effektive Länge$\si{\centi\meter}$} \\
+        {Zählrate$/\num{120}^{-1}\si{\per\second}$} & {Energie$/\si{\mega\electronvolt}$} & {Druck$/\si{\milli\bar}$} &{effektive Länge$/\si{\centi\meter}$} \\
         \midrule
         148139 & 4.00 & 0 & 0.00\\
         150632 & 3.93 & 50 & 0.07\\

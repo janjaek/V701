@@ -1,4 +1,33 @@
 \section{Theorie}
 \label{sec:Theorie}
-
-\cite{sample}
+In diesem Versuch wird die Reichweite von $\alpha$-Strahlung in Luft untersucht.
+Diese hängt mit der Energie der Strahlung zusammen, da die $\alpha$-Teilchen beim Durchlaufen von Materie über verschiedene Wechselwirkungen ihre diese abgeben.
+Einerseits besteht die Möglichkeit, dass die Teilchen ihre Energie durch elastische Stöße bzw. Rutherford-Streuung abgeben, jedoch ist dies nicht der hauptsächliche Grund für die Energieabgabe.
+Wesentlich bedeutender ist die Ionisation der Moleküle oder auch die Anregung und Aufteilung dieser. Diese Effekte lassen sich für hohe Energien über die Bethe-Bloch-Gleichung beschreiben:
+\begin{equation}
+	\label{bbgl}
+	\symup{dE_\alpha} = -\frac{z^2e^4}{4\pi\epsilon_0m_e} \frac{nZ}{v^2} \ln\left(\frac{2m_ev^2}{I}\right) \symup{dx}
+\end{equation}
+Hierbei ist $z$ die Ladung und $v$ die Geschwindigkeit der $\alpha$-Teilchen, $I$ die Ionisierungsenergie, $Z$ die Ordnungszahl und $n$ die Teilchendichte der Luft.
+Somit ist dieser Effekt direkt abhängig von der Energie der Strahlung und der Dichte der Luft.
+Es lässt sich zudem eine Reichweite $R$ definieren:
+\begin{equation}
+	\label{R}
+	R=-\int_0^{E_\alpha}\frac{\symup{dE-\alpha}}{\frac{\symup{dE_\alpha}{dx}}
+\end{equation]
+\\
+Für nierdige Energien verliert die Gleichung \eqref{bbgl} jedoch an Geltung. Deswegen wird aus empirisch gewonnenen Messergebnissen eine Gleichung für eine mittlere Reichweite $R_\text m$ bestimmt.
+Die mittlere Reichweite wird definiert als den Abstand, bei welchem noch die Hälfte der $\alpha$-Teilchen vorhanden sind.
+Es ergibt sich für $\alpha$-Strahlung in Luft mit Energien $E_\alpha \le \SI{2.5}{\mega\electronvolt}:
+\begin{equation}
+	\label{Rm}
+	R_\text m = E_\alpha \frac{\SI{3.1}{\milli\meter}}{\si{\mega\electronvolt}^{3/2}}
+\end{equation}
+Diese mittlere Reichweite ist in Gasen für konstantes Volumen und konstante Temperatur proportional zum Druck $p$.
+Es lässt sich somit bei einer Messung mit variirendem Druck ein Rückschluss auf die Reichweite ziehen.
+Hierfür ist es sinnvoll eine effektive Länge $x$ zwischen Quelle und Detektor zu definieren mit
+\begin{equation}
+	\label{xeff}
+	x = x_0\frac{p}{p_0},
+\end{equation}
+wobei $x_0$ der tatsächliche Abstand zwischen Strahler und Detektor und $p_0 = \SI{1013}{\milli\bar}$ der Atmosphärendruck ist.
