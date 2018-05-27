@@ -1,6 +1,6 @@
 \section{Auswertung}
 \label{sec:Auswertung}
-
+\subsection{Bestimmung der Reichweite von Alpha-Strahlung}
 Es werden zwei Messungen für zwei verschiedene feste Abstände durchgeführt.
 Es werden Zählrate, Drücke und Channel aufgenommen.
 Der Channel für die Messung bei $0\si{\milli\bar}$ entspricht $4\si{\mega\electronvolt}$.
@@ -91,7 +91,7 @@ Damit ergibt sich ein Energieverlust von
   -\frac{dE}{dx} =(-0.52\pm0.07)\si{\mega\electronvolt\per\centi\meter} .
 \end{equation*}
 Analog wird für den zweiten Abstand vorgegangen.
-Die Messwerte sind in Tabelle \ref{tab:mess2} aufgetragen
+Die Messwerte sowie Energien und effektive Längen sind in Tabelle \ref{tab:mess2} aufgetragen.
 \begin{table}[H]
     \caption{Messwerte für einen festen Abstand von $x_0=1.5\si{\centi\meter}$.}
     \label{tab:mess2}
@@ -124,3 +124,105 @@ Die Messwerte sind in Tabelle \ref{tab:mess2} aufgetragen
         \bottomrule
     \end{tabular}
 \end{table}
+\noindent In Abbildung \ref{fig:c2} ist die Zählrate gegen die effektive Länge aufgetragen, zusätzlich ist noch eine lineare Ausgleichsgerade eingezeichnet.
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/counts2.pdf}
+  \caption{Lineare Reggression für die Zählrate in Abhängigkeit der effektiven Länge.}
+  \label{fig:c2}
+\end{figure}
+\noindent Für die Ausgleichsrechnung ergeben sich die Parameter
+\begin{equation*}
+  m =(-204\pm17)\si{\per\centi\meter}
+\end{equation*}
+und
+\begin{equation*}
+  b = 1254\pm12   .
+\end{equation*}
+Die mittlere Reichweite berechnet sich durch den Schnittpunkt der Ausgleichsgerade mit der Horizontalen am Punkt $y=617.25$.
+Es ergibt sich für die mittlere Reichweite:
+\begin{equation}
+  R_m=(3.12\pm0.27)\si{\centi\meter} .
+\end{equation}
+Ihr Fehler berrechnet sich über die Gaußsche Fehlerfortpflanzung, gemäß:
+\begin{equation*}
+    \sigma_R = \sqrt{(\frac{b-617.25}{m^2}\sigma_m)^2 +(-\frac{1}{m}\sigma_b)^2} .
+\end{equation*}
+Der zugehörige Energiewert beträgt $E_{\alpha}=$
+Die Energie wird in Abbildung\ref{fig:e2} als Funktion der effektiven Länge aufgetragen.
+Es wird eine Reggressionsgerade nach der Vorschrift
+\begin{equation*}
+  f(x) = mx + b
+\end{equation*}
+durch die Messwerte gezogen.
+Damit ergibt sich für den Energieverlust ein Wert von
+\begin{equation*}
+  -\frac{dE}{dx} =(-1.10\pm0.04)\si{\mega\electronvolt\per\centi\meter} .
+\end{equation*}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/energie2.pdf}
+  \caption{Lineare Reggression für die Energie in Abhängigkeit der effektiven Länge.}
+  \label{fig:e2}
+\end{figure}
+
+\subsection{Statistik des radioaktiven Zerfalls}
+Die Messwerte sind in Tabelle \ref{tab:pos} eingetragen.
+\begin{table}[H]
+    \caption{Messwerte für die Statistik des radioaktiven Zerfalls.}
+    \label{tab:pos}
+    \centering
+    \begin{tabular}{S[table-format=4.0] S[table-format=4.0] S[table-format=4.0] S[table-format=4.0] S[table-format=4.0]  }
+        \toprule
+        {Zählrate$1/10s$} & {Zählrate$1/10s$}  & {Zählrate$1/10s$} & {Zählrate$1/10s$}  & {Zählrate$1/10s$}  \\
+        \midrule
+        3378 & 3677 & 3355 & 3590 & 3310\\
+        3674 & 3550 & 3367 & 3500 & 3693\\
+        3605 & 3602 & 3419 & 3372 & 3581\\
+        3447 & 3411 & 3549 & 3458 & 3670\\
+        3533 & 3583 & 3673 & 3479 & 3474\\
+        3445 & 3446 & 3586 & 3512 & 3717\\
+        3515 & 3570 & 3632 & 3672 & 3606\\
+        3639 & 3667 & 3762 & 3557 & 3479\\
+        3602 & 3546 & 3467 & 3614 & 3559\\
+        3410 & 3786 & 3468 & 3624 & 3819\\
+        3754 & 3384 & 3460 & 3404 & 3457\\
+        3760 & 3744 & 3373 & 3429 & 3699\\
+        3620 & 3475 & 3537 & 3605 & 3542\\
+        3603 & 3624 & 3791 & 3711 & 3446\\
+        3476 & 3488 & 3540 & 3791 & 3526\\
+        3407 & 3473 & 3667 & 3620 & 3498\\
+        3674 & 3783 & 3806 & 3551 & 3565\\
+        3871 & 3602 & 3858 & 3487 & 3648\\
+        3576 & 3395 & 3680 & 3590 & 3704\\
+        3696 & 3513 & 3508 & 3512 & 3617\\
+
+        \bottomrule
+    \end{tabular}
+\end{table}
+\noindent Die Zählraten sind in zwei Histogrammen aufgetragen.
+In Abbildung \ref{fig:pos} ist zusätzlich eine Poissonverteilung aufgetragen und in Abbildung \ref{fig:gauß} eine Gaußverteilung.
+Der Mittelwert der Zählrate beträgt $\bar{N}= 357.19$ und die Varianz $\sigma_N = 156.326$.
+Für die Poissonverteilung wird die Gleichung
+\begin{equation}
+  P(N)=\frac{\lambda^N \exp(-\lambda)}{N!}
+\end{equation}
+verwendet.
+Die Gaußverteilung wird mit der Gleichung
+\begin{equation}
+  G(N) = \frac{A}{\sigma_N \sqrt(2\pi)} \exp(-\frac{1}{2}(\frac{N-\bar{N}}{\sigma_N}))
+\end{equation}
+erzeugt.
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/PlotPoisson.pdf}
+  \caption{Histogramm für die Statistik des radioaktiven Zerfalls mit Poissonverteilung.}
+  \label{fig:pos}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics{build/PlotGauss.pdf}
+  \caption{Histogramm für die Statistik des radioaktiven Zerfalls mit Gaußverteilung.}
+  \label{fig:gauß}
+\end{figure}
