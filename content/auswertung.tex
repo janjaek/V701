@@ -4,7 +4,7 @@
 Es werden zwei Messungen für zwei verschiedene feste Abstände durchgeführt.
 Es werden Zählrate, Druck und Channel aufgenommen.
 Der Channel für die Messung bei $\SI{0}{\milli\bar}$ entspricht $\SI{4}{\mega\electronvolt}$.
-Die effektive Länge wird mit Gleichung\eqref{xeff} bestimmt.
+Die effektive Länge wird mit Gleichung \eqref{xeff} bestimmt.
 Die so erhaltenen Werte sind in Tabelle \ref{tab:mess1} aufgetragen.
 \begin{table}[H]
     \caption{Messwerte für einen festen Abstand von $x_0=\SI{2}{\centi\meter}$.}
@@ -61,7 +61,7 @@ und
 Die mittlere Reichweite ergibt sich dann als Schnittpunkt der Regressionsgeraden mit der Horizontalen bei $y=\SI{309.46}{\per\second}$.
 Die mittlere Reichweite kann, dann durch umstellen der Funktionsvorschrift, mit
 \begin{equation*}
-  R_m=\frac{\SI{309.46}{\per\second}-b}{m}
+  R_m=\frac{\SI[per-mode=reciprocal]{309.46}{\per\second}-b}{m}
 \end{equation*}
 bestimmt werden.
 Der Fehler der mittleren Reichweite wird mit Gaußscher Fehlerfortpflanzung nach
@@ -70,14 +70,14 @@ Der Fehler der mittleren Reichweite wird mit Gaußscher Fehlerfortpflanzung nach
 \end{equation*}
 berrechnet.
 Der so erhaltene Wert beträgt $R_m= \SI{0.93\pm0.1}{\centi\meter}$.
-Damit lässt sich nach Gleichung\eqref{Rm} eine Energie von $E_{\alpha} = \SI{0.45}{\mega\electronvolt}$ bestimmen.
+Damit lässt sich nach Gleichung \eqref{Rm} eine Energie von $E_{\alpha} = \SI{0.45}{\mega\electronvolt}$ bestimmen.
 Die Energie wird in Abbildung \ref{fig:e1} als Funktion der effektiven Länge aufgetragen.
 Es wird eine Reggressionsgerade nach der Vorschrift
 \begin{equation*}
   f(x) = mx + b
 \end{equation*}
 durch die Messwerte gezogen.
-Für die Reggressionsrechnung wird nur der lineare Anteil der Messwerte verwendet.
+Für die Regressionsrechnung wird nur der lineare Anteil der Messwerte verwendet.
 \begin{figure}[H]
   \centering
   \includegraphics{build/energie1.pdf}
@@ -132,23 +132,23 @@ Die Messwerte sowie Energien und effektive Längen sind in Tabelle \ref{tab:mess
 \end{figure}
 \noindent Für die Ausgleichsrechnung ergeben sich die Parameter
 \begin{equation*}
-  m =(-204\pm17)\si{\per\centi\meter}
+  m = \SI{-204\pm17}{\per\second\per\centi\meter}
 \end{equation*}
 und
 \begin{equation*}
-  b = 1254\pm12   .
+  b = \SI{1254\pm12}{\per\second}   .
 \end{equation*}
-Die mittlere Reichweite berechnet sich durch den Schnittpunkt der Ausgleichsgerade mit der Horizontalen am Punkt $y=617.25$.
+Die mittlere Reichweite berechnet sich durch den Schnittpunkt der Ausgleichsgerade mit der Horizontalen am Punkt $y=\SI{617.25}{\per\second}$.
 Es ergibt sich für die mittlere Reichweite:
 \begin{equation}
-  R_m=(3.12\pm0.27)\si{\centi\meter} .
+  R_m= \SI{3.12\pm0.27}{\centi\meter} 
 \end{equation}
 Ihr Fehler berrechnet sich über die Gaußsche Fehlerfortpflanzung, gemäß:
 \begin{equation*}
-    \sigma_R = \sqrt{(\frac{b-617.25}{m^2}\sigma_m)^2 +(-\frac{1}{m}\sigma_b)^2} .
+    \sigma_R = \sqrt{\left(\frac{b-\SI{617.25}{\per\second}}{m^2}\sigma_m\right)^2 +\left(\frac{1}{m}\sigma_b\right)^2} 
 \end{equation*}
-Der zugehörige Energiewert beträgt $E_{\alpha}=$
-Die Energie wird in Abbildung\ref{fig:e2} als Funktion der effektiven Länge aufgetragen.
+Der zugehörige Energiewert beträgt $E_{\alpha}=$FEHLT.
+Die Energie wird in Abbildung \ref{fig:e2} als Funktion der effektiven Länge aufgetragen.
 Es wird eine Reggressionsgerade nach der Vorschrift
 \begin{equation*}
   f(x) = mx + b
@@ -156,7 +156,7 @@ Es wird eine Reggressionsgerade nach der Vorschrift
 durch die Messwerte gezogen.
 Damit ergibt sich für den Energieverlust ein Wert von
 \begin{equation*}
-  -\frac{dE}{dx} =(-1.10\pm0.04)\si{\mega\electronvolt\per\centi\meter} .
+  -\frac{dE}{dx} =\SI{-1.10\pm0.04}{\mega\electronvolt\per\centi\meter} .
 \end{equation*}
 
 \begin{figure}[H]
@@ -174,7 +174,7 @@ Die Messwerte sind in Tabelle \ref{tab:pos} eingetragen.
     \centering
     \begin{tabular}{S[table-format=4.0] S[table-format=4.0] S[table-format=4.0] S[table-format=4.0] S[table-format=4.0]  }
         \toprule
-        {Zählrate$1/10s$} & {Zählrate$1/10s$}  & {Zählrate$1/10s$} & {Zählrate$1/10s$}  & {Zählrate$1/10s$}  \\
+        {Zählrate$/\num{10}^-1\si{\per\second}$} & {Zählrate$/\num{10}^-1\si{\per\second}$}  & {Zählrate$/\num{10}^-1\si{\per\second}$} & {Zählrate$/\num{10}^-1\si{\per\second}$}  & {Zählrate$/\num{10}^-1\si{\per\second}$}  \\
         \midrule
         3378 & 3677 & 3355 & 3590 & 3310\\
         3674 & 3550 & 3367 & 3500 & 3693\\
@@ -196,13 +196,12 @@ Die Messwerte sind in Tabelle \ref{tab:pos} eingetragen.
         3871 & 3602 & 3858 & 3487 & 3648\\
         3576 & 3395 & 3680 & 3590 & 3704\\
         3696 & 3513 & 3508 & 3512 & 3617\\
-
         \bottomrule
     \end{tabular}
 \end{table}
 \noindent Die Zählraten sind in zwei Histogrammen aufgetragen.
 In Abbildung \ref{fig:pos} ist zusätzlich eine Poissonverteilung aufgetragen und in Abbildung \ref{fig:gauß} eine Gaußverteilung.
-Der Mittelwert der Zählrate beträgt $\bar{N}= 357.19$ und die Varianz $\sigma_N = 156.326$.
+Der Mittelwert der Zählrate beträgt $\bar{N}= \num{357.19}$ und die Varianz $\sigma_N = \num{156.326}$.
 Für die Poissonverteilung wird die Gleichung
 \begin{equation}
   P(N)=\frac{\lambda^N \exp(-\lambda)}{N!}
@@ -210,7 +209,7 @@ Für die Poissonverteilung wird die Gleichung
 verwendet.
 Die Gaußverteilung wird mit der Gleichung
 \begin{equation}
-  G(N) = \frac{A}{\sigma_N \sqrt(2\pi)} \exp(-\frac{1}{2}(\frac{N-\bar{N}}{\sigma_N}))
+  G(N) = \frac{A}{\sigma_N \sqrt{2\pi}} \exp\left(-\frac{1}{2}\left(\frac{N-\bar{N}}{\sigma_N}\right)\right)
 \end{equation}
 erzeugt.
 \begin{figure}[H]
